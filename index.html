@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload=populateListProductChoices('displayProduct')>
+
+<!-- Tab links, each one with an onclick event associated with it -->
+<h1>Ottawa Food Market</h1>
+<div class="main-div">
+    <div class="tab">
+        <button class="tablinks" onclick="openInfo(event, 'Home')">Home</button>
+        <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="Home" class="tabcontent">
+        <h3>Welcome to Ottawa Food Market</h3>
+        <p>Select the items you would like to purchase today.</p>
+        <div class="filter-line">
+             <p class="filter">Filters: </p>
+            <div id="dietSelect" class="dietSelect">
+                <input name="restrictions" type="checkbox" value="organic" onchange="populateListProductChoices('displayProduct')"> Organic</input>
+                <input name="restrictions" type="checkbox" value="vegetarian" onchange="populateListProductChoices('displayProduct')"> Vegetarian</input>
+                <input name="restrictions" type="checkbox" value="glutenFree" onchange="populateListProductChoices('displayProduct')"> Gluten Free</input>
+            </div>
+        <br>
+
+        </div>
+        <div id="displayProduct"></div>
+
+        <button id="addCart" type="button" class="block" onclick="selectedItems()">
+            Add to cart.
+        </button>
+    </div>
+
+    <div id="Products" class="tabcontent">
+        <h3>Your targeted products</h3>
+        <p>We preselected products based on your restrictions.</p>
+        Choose items to buy:
+    </div>
+
+    <div id="Cart" class="tabcontent">
+        <h3>Cart</h3>
+        <p>Here is your cart.</p>
+        <div id="displayCart"></div>
+    </div>
+</div>
+<footer>
+    <p>Website designed by Bhalachandra Malghan</p>
+</footer>
+
+<script src="scripts/groceries.js"></script>
+<script src="scripts/main.js"></script>
+
+</body>
+
+</html>
