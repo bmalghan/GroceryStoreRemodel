@@ -7,25 +7,28 @@ var products = [
 		name: "broccoli",
 		vegetarian: true,
 		glutenFree: true,
-		price: 1.99,
+		price: 1.98,
 		organic: false,
-		image: "broccoli.jpg"
+		image: "broccoli.jpg",
+		type: "fruit"
 	},
 	{
 		name: "apple",
 		vegetarian: true,
 		glutenFree: true,
-		price: 1.99,
+		price: 1.5,
 		organic: true,
-		image: "apple.jpg"
+		image: "apple.jpg",
+		type: "fruit"
 	},
 	{
 		name: "banana",
 		vegetarian: true,
 		glutenFree: true,
-		price: 1.99,
+		price: 0.75,
 		organic: true,
-		image: "banana.jpg"
+		image: "banana.jpg",
+		type: "fruit"
 	},
 	{
 		name: "bread",
@@ -33,23 +36,26 @@ var products = [
 		glutenFree: false,
 		price: 2.35,
 		organic: false,
-		image: "bread.jpg"
+		image: "bread.jpg",
+		type: "grain"
 	},
 	{
 		name: "pasta",
 		vegetarian: true,
 		glutenFree: false,
-		price: 4.00,
+		price: 4.25,
 		organic: false,
-		image: "pasta.jpg"
+		image: "pasta.jpg",
+		type: "grain"
 	},
 	{
 		name: "cheese",
 		vegetarian: true,
 		glutenFree: true,
-		price: 4.50,
+		price: 3.50,
 		organic: false,
-		image: "cheese.jpg"
+		image: "cheese.jpg",
+		type: "dairy"
 	},
 	{
 		name: "chocolate",
@@ -57,7 +63,8 @@ var products = [
 		glutenFree: false,
 		price: 0.99,
 		organic: false,
-		image: "chocolate.jpg"
+		image: "chocolate.jpg",
+		type: "other"
 	},
 	{
 		name: "chicken",
@@ -65,7 +72,8 @@ var products = [
 		glutenFree: true,
 		price: 5.00,
 		organic: true,
-		image: "chicken.jpg"
+		image: "chicken.jpg",
+		type: "protein"
 	},
 	{
 		name: "egg",
@@ -73,7 +81,8 @@ var products = [
 		glutenFree: true,
 		price: 3.00,
 		organic: true,
-		image: "egg.jpg"
+		image: "egg.jpg",
+		type: "protein"
 	},
 	{
 		name: "salmon",
@@ -81,7 +90,8 @@ var products = [
 		glutenFree: true,
 		price: 10.00,
 		organic: false,
-		image: "salmon.jpg"
+		image: "salmon.jpg",
+		type: "protein"
 	}
 ];
 	
@@ -100,12 +110,14 @@ function restrictListProducts(prods, restrictions) {
 	let product_names = [];
 	let product_prices = [];
 	let product_img = [];
+	let product_type = [];
 	for (let i=0; i<filteredProducts.length; i+=1) {
 		product_names.push(filteredProducts[i].name);
 		product_prices.push(filteredProducts[i].price);
 		product_img.push(filteredProducts[i].image);
+		product_type.push(filteredProducts[i].type)
 	}
-	return [product_names, product_prices, product_img];
+	return [product_names, product_prices, product_img, product_type];
 }
 
 
@@ -139,4 +151,12 @@ function getTotalPrice(chosenProducts) {
 		}
 	}
 	return totalPrice;
+}
+
+function getPrice(name) {
+	for (let i=0; i<products.length; i+=1) {
+		if (products[i].name === name){
+			return products[i].price;
+		}
+	}
 }

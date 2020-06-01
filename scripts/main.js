@@ -2,7 +2,7 @@
 // It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp
 
 function openInfo(evt, tabName) {
-
+    populateListProductChoices('displayProduct');
     // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -18,7 +18,6 @@ function openInfo(evt, tabName) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
-
 }
 
 
@@ -27,8 +26,11 @@ function openInfo(evt, tabName) {
 
 function populateListProductChoices(slct2) {
     var s1 = document.getElementsByName("restrictions");
-    var s2 = document.getElementById(slct2);
 
+    var types = ["grain", "fruit", "other", "protein", "dairy"]
+    for (i = 0; i < types.length; i++){
+        document.getElementById(types[i]).innerText = "";
+    }
     //get restrictions from s1
     var chosenRestrictions = [];
     for (i = 0; i < s1.length; i++) {
@@ -36,9 +38,6 @@ function populateListProductChoices(slct2) {
             chosenRestrictions.push(s1[i].value)
         }
     }
-
-    // s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
-    s2.innerHTML = "";
 
     // obtain a reduced list of products based on restrictions
     var optionArray = restrictListProducts(products, chosenRestrictions);
@@ -52,7 +51,10 @@ function populateListProductChoices(slct2) {
         var productName = optionArray[0][i];
         var productPrice = optionArray[1][i];
         var productImg = optionArray[2][i];
+        var productType = optionArray[3][i];
 
+        console.log(productType);
+        var s3 = document.getElementById(productType);
         //create food card
         var div = document.createElement("div");
         div.className = "food-card";
@@ -80,7 +82,7 @@ function populateListProductChoices(slct2) {
         label.appendChild(document.createTextNode(productName.concat(" - $" + productPrice)));
         div.appendChild(label);
 
-        s2.appendChild(div);
+        s3.appendChild(div);
 
         // create a breakline node and add in HTML DOM
         //s2.appendChild(document.createElement("br"));
@@ -96,16 +98,23 @@ function selectedItems() {
     var ele = document.getElementsByName("product");
     var chosenProducts = [];
 
-    var c = document.getElementById('displayCart');
+    var c = document.getElementById("displayCart");
     c.innerHTML = "";
+
+    var d = document.getElementById("checkoutCart");
+    d.innerHTML = "";
+
+    var header = document.createElement("h3");
+    header.innerText = "Your Cart";
+    c.appendChild(header);
 
     // build list of selected item
     var para = document.createElement("P");
-    para.innerHTML = "You selected : ";
     para.appendChild(document.createElement("br"));
     for (i = 0; i < ele.length; i++) {
         if (ele[i].checked) {
             para.appendChild(document.createTextNode(ele[i].value));
+            para.appendChild(document.createTextNode(" -    $".concat(getPrice(ele[i].value))));
             para.appendChild(document.createElement("br"));
             chosenProducts.push(ele[i].value);
         }
@@ -113,9 +122,23 @@ function selectedItems() {
 
     // add paragraph and total price
     c.appendChild(para);
-    c.appendChild(document.createTextNode("Total Price is $" + getTotalPrice(chosenProducts)));
 
-    openInfo(event, 'Cart');
-
+    c.appendChild(document.createTextNode("Subtotal is $" + getTotalPrice(chosenProducts)));
 }
 
+
+//https://www.w3schools.com/howto/howto_js_accordion.asp
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}

@@ -3,8 +3,11 @@
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  border: 1px solid lightblue;
+  background-color: lightblue;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: none;
 
 }
 
@@ -21,30 +24,33 @@
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: dodgerblue;
+  color: white;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: dodgerblue;
+  color: white;
 }
 
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
+  padding: 6px 12px 2% 12px;
   border: 1px solid #ccc;
   border-top: none;
   font-size: 18px;
+  background-color: white !important;
 }
 
 footer > p {
-  position: relative;
   bottom: 10px;
   text-align: center;
   color: black;
   font-size: 18px;
   font-weight: bold;
+  padding-bottom: 2%;
 }
 
 h1 {
@@ -52,16 +58,16 @@ h1 {
 }
 
 body, html {
-  height: 95%;
+  background: whitesmoke;
 }
 
 .main-div {
-  height: 94%;
-  margin: auto 5%;
+  margin: auto 5% 2% 5%;
+
 }
 
 .food-image {
-  width: 100px;
+  width: 75px;
   display: block;
   padding: 5px;
   margin: auto 25px;
@@ -71,9 +77,14 @@ body, html {
   margin: 10px;
   padding: 8px;
   display: inline-block;
-  width: 150px;
+  width: 125px;
   text-align: center;
   border-radius: 5px;
+  font-size: 14px;
+}
+.food-card > label {
+  padding-left: 5px;
+  padding-bottom: 5px;
 }
 
 .food-card:hover {
@@ -100,4 +111,83 @@ body, html {
 
 .dietSelect > input {
   margin-left: 20px;
+}
+
+.col1 {
+  width: 60%;
+  display: inline-block;
+}
+
+.col2 {
+  width: 36%;
+  display: inline-block;
+  float: right;
+  background-color: lightgray;
+  padding: 2%;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.col {
+  display: inline;
+}
+
+.main-content {
+  padding-left: 2%;
+}
+
+.main-div > input {
+  padding-right: 5px;
+}
+
+.add-cart {
+  float: right;
+  margin-right: 10%;
+  margin-top: 5%;
+  background-color: lightblue;
+  padding: 5px 7px;
+  border: solid black 1px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.noHover{
+    pointer-events: none;
+}
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  margin-left: 2%;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 90%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+.accordion:last-child{
+  margin-bottom: 20px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    margin-left: 2%;
+
+  padding: 0 5px;
+  background-color: white;
+  overflow: hidden;
+  display: none;
+  width: 90%;
+}
+
+.panel:last-child{
+  margin-bottom: 20px;
 }
