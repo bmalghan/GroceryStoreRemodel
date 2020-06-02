@@ -11,7 +11,7 @@
 <div class="main-div" onload="populateListProductChoices('displayProduct')">
     <div class="tab">
         <button class="tablinks" onclick="openInfo(event, 'Home')">Home</button>
-        <button class="tablinks noHover" onclick="openInfo(event, 'Checkout')">Checkout</button>
+        <button id="check" class="tablinks noHover" onclick="openInfo(event, 'Checkout')">Checkout</button>
     </div>
 
     <!-- Tab content -->
@@ -68,10 +68,9 @@
     </div>
 
 
-    <div id="Checkout" class="tabcontent">
-        <h3>Checkout</h3>
+    <div id="Checkout" class="tabcontent" onload="checkout()">
         <div id="checkoutCart">
-            <h4>Your Cart</h4>
+
         </div>
 
     </div>

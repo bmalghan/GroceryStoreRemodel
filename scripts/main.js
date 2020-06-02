@@ -18,6 +18,11 @@ function openInfo(evt, tabName) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+
+    if (tabName === "Checkout"){
+        document.getElementById("check").className += " active";
+    }
+    document.getElementById("check").className.replace(" active", "");
 }
 
 
@@ -123,7 +128,34 @@ function selectedItems() {
     // add paragraph and total price
     c.appendChild(para);
 
-    c.appendChild(document.createTextNode("Subtotal is $" + getTotalPrice(chosenProducts)));
+    let x = Math.round( getTotalPrice(chosenProducts)* 100) / 100;
+    c.appendChild(document.createTextNode("Subtotal is $" + x));
+    checkout(x);
+}
+
+function checkout(subtotal) {
+    var page = document.getElementById("checkoutCart");
+
+    var head = document.createElement("h3");
+    head.innerText = "Checkout";
+
+    var sub =  document.createElement("p");
+    sub.innerText = "Subtotal: $".concat(subtotal);
+    var tax =  document.createElement("p");
+    let taxc = Math.round(subtotal*0.13 * 100) / 100;
+    tax.innerText = "Tax: $".concat(taxc);
+    var lines =  document.createElement("p");
+    lines.innerText = "-------------------";
+    var total = document.createElement("p");
+    let totaln = subtotal + taxc;
+    total.innerText = "Total Due: $".concat(totaln);
+    console.log(subtotal);
+
+    page.appendChild(head);
+    page.appendChild(sub);
+    page.appendChild(tax);
+    page.appendChild(lines);
+    page.appendChild(total);
 }
 
 

@@ -119,11 +119,12 @@ body, html {
 }
 
 .col2 {
-  width: 36%;
+  width: 34%;
   display: inline-block;
   float: right;
   background-color: lightgray;
   padding: 2%;
+  margin-right: 2%;
   border-radius: 10px;
   height: 100%;
 }
@@ -182,10 +183,10 @@ body, html {
     margin-left: 2%;
 
   padding: 0 5px;
-  background-color: white;
+  background-color: whitesmoke;
   overflow: hidden;
   display: none;
-  width: 90%;
+  width: 88%;
 }
 
 .panel:last-child{
