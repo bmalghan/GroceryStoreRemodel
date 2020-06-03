@@ -4,6 +4,7 @@
 function openInfo(evt, tabName) {
     populateListProductChoices('displayProduct');
     // Get all elements with class="tabcontent" and hide them
+    document.getElementById("hm").className += " active";
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
@@ -21,6 +22,7 @@ function openInfo(evt, tabName) {
 
     if (tabName === "Checkout"){
         document.getElementById("check").className += " active";
+        document.getElementById("hm").className += " active";
     }
     document.getElementById("check").className.replace(" active", "");
 }
